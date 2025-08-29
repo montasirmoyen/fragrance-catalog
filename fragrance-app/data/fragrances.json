@@ -1,0 +1,57 @@
+[
+  {
+    "ID": 1,
+    "Name": "Eau Sauvage",
+    "Brand": "Christian Dior",
+    "Image URL": "https/.../eau-sauvage.jpg",
+    "Image Fallbacks": [
+    "https://...../eau-sauvage.jpg"
+                    ],
+   "Purchase URL": "https:....",
+    "Gender": "men",
+    "Price": "152.99",
+    "Longevity": "55.6%",
+    "Sillage": "49.25%",
+    "General Notes": [
+      "Hedione", "Galbanum", "Petitgrain",
+      "Vetiver", "Pink Pepper"
+    ],
+    "Main Accords": [
+      "aromatic", "citrus", "fresh spicy",
+      "woody", "earthy", "mossy", "green"
+    ],
+    "Main Accords Percentage": {
+      "aromatic": "100%", "citrus": "93%",
+      "fresh spicy": "79%", "woody": "67%"
+    },
+    "Season Ranking": [
+     {  "name": "spring",  "value": "2.353" },
+     {  "name": "summer",  "value": "1.212" },
+     {  "name": "fall",    "value": "1.051" },
+     {  "name": "winter",  "value": "0.469" }
+    ],
+    "Occasion Ranking": [
+     {  "name": "professional", "value": "2.636" },
+     {  "name": "casual",       "value": "1.145" },
+     {  "name": "night out",    "value": "0" }
+    ],
+    "Notes": {
+      "Top": [
+        { "name": "Lemon", "imageUrl": "..." },
+        { "name": "Bergamot", "imageUrl": "..." },
+        { "name": "Basil", "imageUrl": "..." }
+      ],
+      "Middle": [
+        { "name": "Jasmine", "imageUrl": "..." },
+        { "name": "Coriander", "imageUrl": "..." },
+        { "name": "Patchouli", "imageUrl": "..." },
+        { "name": "Sandalwood", "imageUrl": "..." }
+      ],
+      "Base": [
+        { "name": "Oakmoss", "imageUrl": "..." },
+        { "name": "Vetiver", "imageUrl": "..." },
+        { "name": "Musk", "imageUrl": "..." }
+      ]
+      }
+    }
+  ]
