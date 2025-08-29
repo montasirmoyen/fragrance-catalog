@@ -3,55 +3,31 @@
     "ID": 1,
     "Name": "Eau Sauvage",
     "Brand": "Christian Dior",
-    "Image URL": "https/.../eau-sauvage.jpg",
-    "Image Fallbacks": [
-    "https://...../eau-sauvage.jpg"
-                    ],
-   "Purchase URL": "https:....",
+    "Image URL": "https://content.stylitics.com/images/items/16703517?size=large",
+    "Purchase URL": "https://www.amazon.com/dp/B079TQS99Q?tag=awsperfumesearch-20&linkCode=osi&th=1",
     "Gender": "men",
-    "Price": "152.99",
-    "Longevity": "55.6%",
-    "Sillage": "49.25%",
-    "General Notes": [
-      "Hedione", "Galbanum", "Petitgrain",
-      "Vetiver", "Pink Pepper"
-    ],
-    "Main Accords": [
-      "aromatic", "citrus", "fresh spicy",
-      "woody", "earthy", "mossy", "green"
-    ],
-    "Main Accords Percentage": {
-      "aromatic": "100%", "citrus": "93%",
-      "fresh spicy": "79%", "woody": "67%"
-    },
-    "Season Ranking": [
-     {  "name": "spring",  "value": "2.353" },
-     {  "name": "summer",  "value": "1.212" },
-     {  "name": "fall",    "value": "1.051" },
-     {  "name": "winter",  "value": "0.469" }
-    ],
-    "Occasion Ranking": [
-     {  "name": "professional", "value": "2.636" },
-     {  "name": "casual",       "value": "1.145" },
-     {  "name": "night out",    "value": "0" }
-    ],
+    "Price": "150.00",
+    "Longevity": "70",
+    "Sillage": "60",
     "Notes": {
-      "Top": [
-        { "name": "Lemon", "imageUrl": "..." },
-        { "name": "Bergamot", "imageUrl": "..." },
-        { "name": "Basil", "imageUrl": "..." }
-      ],
-      "Middle": [
-        { "name": "Jasmine", "imageUrl": "..." },
-        { "name": "Coriander", "imageUrl": "..." },
-        { "name": "Patchouli", "imageUrl": "..." },
-        { "name": "Sandalwood", "imageUrl": "..." }
-      ],
-      "Base": [
-        { "name": "Oakmoss", "imageUrl": "..." },
-        { "name": "Vetiver", "imageUrl": "..." },
-        { "name": "Musk", "imageUrl": "..." }
-      ]
-      }
+      "Top": ["Bergamot"],
+      "Middle": ["Sichuan Pepper", "Lavender", "Star Anise", "Nutmeg"],
+      "Base": ["Ambroxan", "Vanilla"]
+    },
+    "Accords": [
+      "fresh spicy", "citrus", "amber",
+      "lavender", "musky", "aromatic",
+      "herbal", "anis", "soft spicy", "floral"
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "90" },
+     {  "name": "spring",  "value": "100" },
+     {  "name": "summer",  "value": "90" },
+     {  "name": "fall",    "value": "100" }
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "90" },
+     {  "name": "night", "value": "100" }
+    ]
     }
   ]
