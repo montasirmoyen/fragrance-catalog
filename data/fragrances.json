@@ -1,7 +1,7 @@
 [
   {
     "ID": 1,
-    "Name": "Eau Sauvage",
+    "Name": "Sauvage Eau de Parfum",
     "Brand": "Christian Dior",
     "Image URL": "https://content.stylitics.com/images/items/16703517?size=large",
     "Purchase URL": "https://www.amazon.com/dp/B079TQS99Q?tag=awsperfumesearch-20&linkCode=osi&th=1",
@@ -9,15 +9,14 @@
     "Price": "150.00",
     "Longevity": "70",
     "Sillage": "60",
-    "Notes": {
-      "Top": ["Bergamot"],
-      "Middle": ["Sichuan Pepper", "Lavender", "Star Anise", "Nutmeg"],
-      "Base": ["Ambroxan", "Vanilla"]
-    },
     "Accords": [
       "fresh spicy", "citrus", "amber",
       "lavender", "musky", "aromatic",
       "herbal", "anis", "soft spicy", "floral"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "90" },
+     {  "name": "night", "value": "100" }
     ],
     "Season Ranking": [
      {  "name": "winter",  "value": "90" },
@@ -25,9 +24,74 @@
      {  "name": "summer",  "value": "90" },
      {  "name": "fall",    "value": "100" }
     ],
-    "Time Ranking": [
-     {  "name": "day", "value": "90" },
-     {  "name": "night", "value": "100" }
-    ]
+    "Notes": {
+      "Top": ["Bergamot"],
+      "Middle": ["Sichuan Pepper", "Lavender", "Star Anise", "Nutmeg"],
+      "Base": ["Ambroxan", "Vanilla"]
     }
-  ]
+},
+
+    {
+    "ID": 2,
+    "Name": "Y Eau de Parfum",
+    "Brand": "Yves Saint Laurent",
+    "Image URL": "https://media.ulta.com/i/ulta/2534072?w=500&h=500",
+    "Purchase URL": "https://www.amazon.com/dp/B07GB6B37N?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Gender": "men",
+    "Price": "125.00",
+    "Longevity": "70",
+    "Sillage": "50",
+    "Accords": [
+      "fresh spicy", "aromatic", "woody",
+      "fruity", "amber", "fresh",
+      "citrus", "herbal", "green", "warm spicy"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "95" },
+     {  "name": "night", "value": "80" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "50" },
+     {  "name": "spring",  "value": "100" },
+     {  "name": "summer",  "value": "100" },
+     {  "name": "fall",    "value": "80" }
+    ],
+    "Notes": {
+      "Top": ["Apple", "Bergamot", "Ginger"],
+      "Middle": ["Sage", "Juniper Berries", "Gernaium"],
+      "Base": ["Amberwood", "Tonka Bean", "Cedar", "Vetiver", "Olibanum"]
+    }
+},
+
+{
+    "ID": 3,
+    "Name": "Bleu de Chanel Eau de Parfum",
+    "Brand": "Chanel",
+    "Image URL": "https://media.ulta.com/i/ulta/2286830?w=500&h=500",
+    "Purchase URL": "https://www.amazon.com/dp/B07GB6B37N?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Gender": "men",
+    "Price": "200.00",
+    "Longevity": "70",
+    "Sillage": "50",
+    "Accords": [
+      "citrus", "amber", "woody",
+      "fresh spicy", "aromatic", "warm spicy",
+      "smoky", "fresh", "balsamic", "powdery"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "95" },
+     {  "name": "night", "value": "80" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "50" },
+     {  "name": "spring",  "value": "100" },
+     {  "name": "summer",  "value": "100" },
+     {  "name": "fall",    "value": "80" }
+    ],
+    "Notes": {
+      "Top": ["Apple", "Bergamot", "Ginger"],
+      "Middle": ["Sage", "Juniper Berries", "Gernaium"],
+      "Base": ["Amberwood", "Tonka Bean", "Cedar", "Vetiver", "Olibanum"]
+    }
+}
+]
