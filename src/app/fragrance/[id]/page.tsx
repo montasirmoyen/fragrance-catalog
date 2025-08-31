@@ -49,6 +49,14 @@ function getMoreFromDesigner(current: any, all: any[]) {
   return all.filter(f => f.Brand === current.Brand && f.ID !== current.ID);
 }
 
+function getBarColor(value: number) {
+  if (value < 25) return "bg-red-500"
+  if (value < 40) return "bg-orange-400"
+  if (value < 60) return "bg-yellow-400"
+  if (value < 85) return "bg-green-500"
+  return "bg-blue-500"
+}
+
 function FragranceCard({ fragrance }: { fragrance: any }) {
   return (
     <Link href={`/fragrance/${fragrance.ID}`} className="block">
@@ -68,9 +76,9 @@ function FragranceCard({ fragrance }: { fragrance: any }) {
   );
 }
 
-
-export default function FragrancePage({ params }: Props) {
-  const fragrance = fragrances.find((f) => f.ID === parseInt(params.id));
+export default async function FragrancePage({ params }: Props) {
+  const awaitedParams = await params;
+  const fragrance = fragrances.find((f) => f.ID === parseInt(awaitedParams.id));
   if (!fragrance) return notFound();
 
   return (
@@ -110,7 +118,7 @@ export default function FragrancePage({ params }: Props) {
           {fragrance.Accords && fragrance.Accords.length > 0 && (
             <div className="mt-6">
               <h2 className="text-lg font-semibold mb-2">Main Accords</h2>
-              <p className="text-sm capitalize">
+              <p className="text-md capitalize">
                 {fragrance.Accords.join(", ")}
               </p>
             </div>
@@ -130,7 +138,8 @@ export default function FragrancePage({ params }: Props) {
                 />
                 <div className="flex-1">
                 <p className="capitalize">{s.name}</p>
-                <ProgressBar value={parseInt(s.value) / 100 * 100} color="bg-blue-400" />
+                                            <ProgressBar value={parseInt(s.value) / 100 * 100} color={getBarColor(parseInt(s.value) / 100 * 100)} />
+
                 </div>
               </div>
               ))}
@@ -150,7 +159,8 @@ export default function FragrancePage({ params }: Props) {
               />
               <div className="flex-1">
                 <p className="capitalize">{t.name}</p>
-                <ProgressBar value={parseInt(t.value) / 100 * 100} color="bg-yellow-400" />
+                                            <ProgressBar value={parseInt(t.value) / 100 * 100} color={getBarColor(parseInt(t.value) / 100 * 100)} />
+
               </div>
               </div>
             ))}
@@ -167,7 +177,7 @@ export default function FragrancePage({ params }: Props) {
               />
               <div className="flex-1">
               <h2 className="text-lg font-semibold mb-2">Longevity</h2>
-              <ProgressBar value={parseInt(fragrance.Longevity)} color="bg-green-500" />
+              <ProgressBar value={parseInt(fragrance.Longevity)} color={getBarColor(parseInt(fragrance.Longevity))} />
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -179,7 +189,7 @@ export default function FragrancePage({ params }: Props) {
               />
               <div className="flex-1">
               <h2 className="text-lg font-semibold mb-2">Sillage</h2>
-              <ProgressBar value={parseInt(fragrance.Sillage)} color="bg-red-500" />
+                            <ProgressBar value={parseInt(fragrance.Sillage)} color={getBarColor(parseInt(fragrance.Sillage))} />
               </div>
             </div>
             </div>
