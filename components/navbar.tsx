@@ -6,7 +6,6 @@ export default function NavBar() {
       <Link href="/" className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition">
         Fragrance Catalog
       </Link>
-     
     </nav>
   );
 }
