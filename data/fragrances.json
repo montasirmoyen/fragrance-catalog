@@ -1,0 +1,161 @@
+[
+  {
+    "ID": 1,
+    "Name": "Sauvage Eau de Parfum",
+    "Brand": "Christian Dior",
+    "Release": "2015",
+    "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.48100.2x.avif",
+    "Purchase URL": "https://www.amazon.com/dp/B079TQS99Q?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Gender": "male",
+    "Longevity": "70",
+    "Sillage": "60",
+    "Accords": [
+      "fresh spicy", "citrus", "amber",
+      "lavender", "musky", "aromatic",
+      "herbal", "anis", "soft spicy", "floral"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "90" },
+     {  "name": "night", "value": "100" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "90" },
+     {  "name": "spring",  "value": "100" },
+     {  "name": "summer",  "value": "90" },
+     {  "name": "fall",    "value": "100" }
+    ],
+    "Notes": {
+      "Top": ["Bergamot"],
+      "Middle": ["Pepper", "Lavender"],
+      "Base": ["Vanilla"]
+    }
+},
+
+    {
+    "ID": 2,
+    "Name": "Y Eau de Parfum",
+    "Brand": "Yves Saint Laurent",
+    "Release": "2018",
+    "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.50757.2x.avif",
+    "Purchase URL": "https://www.amazon.com/dp/B07GB6B37N?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Gender": "male",
+    "Longevity": "70",
+    "Sillage": "50",
+    "Accords": [
+      "fresh spicy", "aromatic", "woody",
+      "fruity", "amber", "fresh",
+      "citrus", "herbal", "green", "warm spicy"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "95" },
+     {  "name": "night", "value": "80" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "50" },
+     {  "name": "spring",  "value": "100" },
+     {  "name": "summer",  "value": "100" },
+     {  "name": "fall",    "value": "80" }
+    ],
+    "Notes": {
+      "Top": ["Apple", "Bergamot", "Ginger"],
+      "Middle": ["Sage"],
+      "Base": ["Amberwood", "Tonka Bean", "Cedar"]
+    }
+},
+
+{
+    "ID": 3,
+    "Name": "Bleu de Chanel",
+    "Brand": "Chanel",
+    "Release": "2010",
+    "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.25967.2x.avif",
+    "Purchase URL": "https://www.amazon.com/dp/B07GB6B37N?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Gender": "male",
+    "Longevity": "70",
+    "Sillage": "50",
+    "Accords": [
+      "citrus", "amber", "woody",
+      "fresh spicy", "aromatic", "warm spicy",
+      "smoky", "fresh", "balsamic", "powdery"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "95" },
+     {  "name": "night", "value": "80" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "50" },
+     {  "name": "spring",  "value": "100" },
+     {  "name": "summer",  "value": "100" },
+     {  "name": "fall",    "value": "80" }
+    ],
+    "Notes": {
+      "Top": ["Apple", "Bergamot", "Ginger"],
+      "Middle": ["Sage"],
+      "Base": ["Amberwood", "Tonka Bean", "Cedar", "Vetiver"]
+    }
+},
+
+{
+    "ID": 4,
+    "Name": "Le Male Elixir",
+    "Brand": "Jean Paul Gaultier",
+    "Release": "2023",
+    "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.81642.2x.avif",
+    "Purchase URL": "https://www.amazon.com/dp/B07GB6B37N?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Gender": "male",
+    "Longevity": "80",
+    "Sillage": "70",
+    "Accords": [
+      "vanilla", "sweet", "honey",
+      "aromatic", "amber", "lavender",
+      "tobacco", "green", "fresh spicy", "powdery"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "40" },
+     {  "name": "night", "value": "90" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "100" },
+     {  "name": "spring",  "value": "35" },
+     {  "name": "summer",  "value": "25" },
+     {  "name": "fall",    "value": "75" }
+    ],
+    "Notes": {
+      "Top": ["Lavender", "Mint"],
+      "Middle": ["Vanilla"],
+      "Base": ["Honey", "Tonka Bean", "Tobacco"]
+    }
+},
+
+{
+    "ID": 5,
+    "Name": "Eros Flame",
+    "Brand": "Versace",
+    "Release": "2018",
+    "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.52180.2x.avif",
+    "Purchase URL": "https://www.amazon.com/dp/B07GB6B37N?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Gender": "male",
+    "Longevity": "80",
+    "Sillage": "70",
+    "Accords": [
+      "citrus", "vanilla", "fresh spicy",
+      "aromatic", "woody", "warm spicy",
+      "sweet", "powdery"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "75" },
+     {  "name": "night", "value": "95" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "100" },
+     {  "name": "spring",  "value": "70" },
+     {  "name": "summer",  "value": "50" },
+     {  "name": "fall",    "value": "100" }
+    ],
+    "Notes": {
+      "Top": ["Orange", "Pepper", "Lemon", "Rosemary"],
+      "Middle": ["Rose"],
+      "Base": ["Vanilla", "Tonka Bean", "Sandalwood"]
+    }
+}
+]

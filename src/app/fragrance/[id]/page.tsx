@@ -17,9 +17,6 @@ function ProgressBar({ value, color }: { value: number; color: string }) {
   );
 }
 
-// Put these above your component (same file)
-
-// Flatten { Top:[], Middle:[], Base:[] } -> unique, lower-cased array of notes
 function getAllNotes(f: any): string[] {
   if (!f || !f.Notes) return [];
   const groups = Object.values(f.Notes) as string[][];
@@ -30,18 +27,17 @@ function getAllNotes(f: any): string[] {
   );
 }
 
-// At least 2 shared notes
 function getSimilarFragrances(current: any, all: any[]) {
   const curSet = new Set(getAllNotes(current));
   if (curSet.size === 0) return [];
 
   return all.filter(f => {
-    if (f.ID === current.ID) return false; // skip itself
+    if (f.ID === current.ID) return false;
     let matches = 0;
     for (const n of getAllNotes(f)) {
       if (curSet.has(n)) {
         matches++;
-        if (matches >= 3) return true; // early exit
+        if (matches >= 3) return true;
       }
     }
     return false;
