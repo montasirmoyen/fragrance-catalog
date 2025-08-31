@@ -69,7 +69,7 @@
     "Brand": "Chanel",
     "Release": "2010",
     "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.25967.2x.avif",
-    "Purchase URL": "https://www.amazon.com/dp/B07GB6B37N?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Purchase URL": "https://www.amazon.com/dp/B01JQJRO8Q?tag=awsperfumesearch-20&linkCode=osi&th=1&psc=1",
     "Gender": "male",
     "Longevity": "70",
     "Sillage": "50",
@@ -133,7 +133,7 @@
     "Brand": "Versace",
     "Release": "2018",
     "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.52180.2x.avif",
-    "Purchase URL": "https://www.amazon.com/dp/B07GB6B37N?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Purchase URL": "https://www.amazon.com/dp/979077320X?tag=awsperfumesearch-20&linkCode=osi&th=1&psc=1",
     "Gender": "male",
     "Longevity": "80",
     "Sillage": "70",
@@ -156,6 +156,70 @@
       "Top": ["Orange", "Pepper", "Lemon", "Rosemary"],
       "Middle": ["Rose"],
       "Base": ["Vanilla", "Tonka Bean", "Sandalwood"]
+    }
+},
+
+{
+    "ID": 6,
+    "Name": "Very Good Girl",
+    "Brand": "Carolina Herrera",
+    "Release": "2021",
+    "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.65560.2x.avif",
+    "Purchase URL": "https://www.amazon.com/dp/B091FPN882?tag=awsperfumesearch-20&linkCode=osi&th=1&psc=1",
+    "Gender": "female",
+    "Longevity": "60",
+    "Sillage": "50",
+    "Accords": [
+      "fruity", "rose", "fresh",
+      "vanilla", "tropical", "soft spicy",
+      "sweet", "sour"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "90" },
+     {  "name": "night", "value": "80" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "50" },
+     {  "name": "spring",  "value": "100" },
+     {  "name": "summer",  "value": "75" },
+     {  "name": "fall",    "value": "75" }
+    ],
+    "Notes": {
+      "Top": ["Litchi"],
+      "Middle": ["Rose"],
+      "Base": ["Vanilla"]
+    }
+},
+
+{
+    "ID": 7,
+    "Name": "Bubble Bath",
+    "Brand": "Maison Martin Margiela",
+    "Release": "2020",
+    "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.60105.2x.avif",
+    "Purchase URL": "https://www.amazon.com/dp/B08GYBCQYR?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Gender": "unisex",
+    "Longevity": "80",
+    "Sillage": "70",
+    "Accords": [
+      "soapy", "coconut", "musky",
+      "lavender", "sweet", "powdery",
+      "white floral", "lactonic", "rose", "citrus"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "100" },
+     {  "name": "night", "value": "25" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "30" },
+     {  "name": "spring",  "value": "95" },
+     {  "name": "summer",  "value": "90" },
+     {  "name": "fall",    "value": "40" }
+    ],
+    "Notes": {
+      "Top": ["Soap", "Bergamot"],
+      "Middle": ["Lavender", "Jasmine", "Rose"],
+      "Base": ["Coconut", "White Musk", "Patchouli"]
     }
 }
 ]

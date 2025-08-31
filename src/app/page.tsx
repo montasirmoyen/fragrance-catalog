@@ -36,28 +36,23 @@ export default function Page() {
 
   const filtered = useMemo(() => {
     let results = fragrances.filter(f => {
-      if (
-        search &&
-        !(
-          f.Name.toLowerCase().includes(search.toLowerCase()) ||
-          f.Brand.toLowerCase().includes(search.toLowerCase())
-        )
-      )
-        return false;
+      if (search) {
+        const combined = `${f.Brand} ${f.Name}`.toLowerCase();
+        if (!combined.includes(search.toLowerCase())) return false;
+      }
       if (genderFilter && f.Gender !== genderFilter) return false;
       if (designerFilter && f.Brand !== designerFilter) return false;
       if (noteFilter && !Object.values(f.Notes).flat().includes(noteFilter)) return false;
       return true;
     });
 
-if (sortBy === "Longest longevity") {
-  results = results.sort((a, b) => Number(b.Longevity) - Number(a.Longevity));
-} else if (sortBy === "Highest sillage") {
-  results = results.sort((a, b) => Number(b.Sillage) - Number(a.Sillage));
-} else {
-  results = results.sort((a, b) => a.ID - b.ID);
-}
-
+    if (sortBy === "Longest longevity") {
+      results = results.sort((a, b) => Number(b.Longevity) - Number(a.Longevity));
+    } else if (sortBy === "Highest sillage") {
+      results = results.sort((a, b) => Number(b.Sillage) - Number(a.Sillage));
+    } else {
+      results = results.sort((a, b) => a.ID - b.ID);
+    }
 
     return results;
   }, [search, genderFilter, designerFilter, noteFilter, sortBy]);
@@ -116,13 +111,20 @@ if (sortBy === "Longest longevity") {
           {/* Designers */}
           <div className="mb-6">
             <p className="font-medium mb-2">Designers</p>
-            <input
-              type="text"
-              placeholder="Search designers..."
-              className="w-full border rounded p-1 mb-2"
-              value={designerSearch}
-              onChange={(e) => setDesignerSearch(e.target.value)}
-            />
+            <div className="relative mb-2">
+              <input
+                type="text"
+                placeholder="Search designers..."
+                className="w-full border rounded p-1 pr-8"
+                value={designerSearch}
+                onChange={(e) => setDesignerSearch(e.target.value)}
+              />
+              <img
+                src="/search.png"
+                alt="Search"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none"
+              />
+            </div>
             <div className="max-h-40 overflow-y-auto text-sm">
               {designers
                 .filter(([d]) =>
@@ -147,13 +149,20 @@ if (sortBy === "Longest longevity") {
           {/* Notes */}
           <div>
             <p className="font-medium mb-2">Notes</p>
-            <input
-              type="text"
-              placeholder="Search notes..."
-              className="w-full border rounded p-1 mb-2"
-              value={noteSearch}
-              onChange={(e) => setNoteSearch(e.target.value)}
-            />
+            <div className="relative mb-2">
+              <input
+                type="text"
+                placeholder="Search notes..."
+                className="w-full border rounded p-1 pr-8"
+                value={noteSearch}
+                onChange={(e) => setNoteSearch(e.target.value)}
+              />
+              <img
+                src="/search.png"
+                alt="Search"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none"
+              />
+            </div>
             <div className="max-h-40 overflow-y-auto text-sm">
               {notes
                 .filter(([n]) =>
@@ -179,14 +188,18 @@ if (sortBy === "Longest longevity") {
 
         {/* RIGHT MAIN */}
         <section className="flex-1 p-8">
-          {/* Search bar */}
-          <div className="mb-6">
+          <div className="mb-6 relative">
             <input
               type="text"
               placeholder="Search fragrance name or designer..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="w-full border rounded-lg p-3 shadow-sm"
+              className="w-full border rounded-lg p-3 shadow-sm pr-10"
+            />
+            <img
+              src="/search.png"
+              alt="Search"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 pointer-events-none"
             />
           </div>
 
