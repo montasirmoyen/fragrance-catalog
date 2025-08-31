@@ -50,6 +50,8 @@ export default function Page() {
       results = results.sort((a, b) => Number(b.Longevity) - Number(a.Longevity));
     } else if (sortBy === "Highest sillage") {
       results = results.sort((a, b) => Number(b.Sillage) - Number(a.Sillage));
+     } else if (sortBy === "Newest") {
+      results = results.sort((a, b) => Number(b.Release) - Number(a.Release));
     } else {
       results = results.sort((a, b) => a.ID - b.ID);
     }
@@ -86,6 +88,7 @@ export default function Page() {
   onChange={e => setSortBy(e.target.value)}
 >
   <option>Most popular</option>
+  <option>Newest</option>
   <option>Longest longevity</option>
   <option>Highest sillage</option>
 </select>
@@ -207,7 +210,7 @@ export default function Page() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {filtered.slice(0, visibleCount).map(f => (
               <Link key={f.ID} href={`/fragrance/${f.ID}`}>
-<div className="bg-white rounded-2xl shadow-md p-4 flex flex-col hover:shadow-lg transition cursor-pointer h-[300px]">
+<div className="bg-white rounded-2xl shadow-md p-4 flex flex-col hover:shadow-lg transition transform hover:scale-105 cursor-pointer h-[300px]">
                   <div className="relative w-full h-48 mb-4">
   <Image
     src={f["Image URL"]}

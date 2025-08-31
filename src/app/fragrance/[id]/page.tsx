@@ -49,6 +49,12 @@ function getMoreFromDesigner(current: any, all: any[]) {
   return all.filter(f => f.Brand === current.Brand && f.ID !== current.ID);
 }
 
+function genderToProperCase(g: string) {
+  if (g.toLowerCase() === "male") return "men";
+  if (g.toLowerCase() === "female") return "women";
+  return "men & women";
+}
+
 function getBarColor(value: number) {
   if (value < 25) return "bg-red-500"
   if (value < 40) return "bg-orange-400"
@@ -99,15 +105,16 @@ export default async function FragrancePage({ params }: Props) {
 
             <div>
               <h1 className="text-2xl font-bold">{fragrance.Name}</h1>
+                            <p className="text-gray-250">for {genderToProperCase(fragrance.Gender)}</p>
               <p className="text-gray-600">{fragrance.Brand}</p>
               {/* <p className="text-green-700 font-medium mt-2">${fragrance.Price}</p> */}
               <a
                 href={fragrance["Purchase URL"]}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition"
+                className="inline-block mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition"
               >
-                Buy Now
+                Purchase
               </a>
 
 
@@ -125,7 +132,7 @@ export default async function FragrancePage({ params }: Props) {
           )}
 
             {/* Season Ranking */}
-            <div className="mt-8">
+            <div className="mt-4">
             <h2 className="text-lg font-semibold mb-2">Season Compatibility</h2>
             <div className="grid grid-cols-2 gap-4">
               {fragrance["Season Ranking"].map((s: any) => (
@@ -147,10 +154,10 @@ export default async function FragrancePage({ params }: Props) {
             </div>
 
             {/* Time Ranking */}
-            <div className="mt-8">
+            <div className="mt-4">
             <h2 className="text-lg font-semibold mb-2">Time of Day Compatibility</h2>
             {fragrance["Time Ranking"].map((t: any) => (
-              <div key={t.name} className="flex items-center gap-3 mb-2">
+              <div key={t.name} className="flex items-center gap-3 mb-4">
               <Image
                 src={`/${t.name.toLowerCase()}.png`}
                 alt={t.name}
@@ -167,7 +174,8 @@ export default async function FragrancePage({ params }: Props) {
             </div>
 
             {/* Longevity + Sillage */}
-            <div className="mt-8 grid grid-cols-2 gap-6">
+            <h2 className="text-lg font-semibold">Performance</h2>
+            <div className="mt-2 grid grid-cols-2 gap-6">
             <div className="flex items-center gap-4">
               <Image
               src="/longevity.png"
@@ -196,7 +204,7 @@ export default async function FragrancePage({ params }: Props) {
 
 {/* Note Pyramid */}
 {fragrance.Notes && (
-  <div className="mt-8">
+  <div className="mt-4">
     <h2 className="text-lg font-semibold mb-4">Fragrance Notes</h2>
 
     {fragrance.Notes.Top?.length > 0 && (

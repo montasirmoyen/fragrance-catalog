@@ -221,5 +221,100 @@
       "Middle": ["Lavender", "Jasmine", "Rose"],
       "Base": ["Coconut", "White Musk", "Patchouli"]
     }
+},
+{
+    "ID": 8,
+    "Name": "Le Male Le Parfum",
+    "Brand": "Jean Paul Gaultier",
+    "Release": "2020",
+    "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.61856.2x.avif",
+    "Purchase URL": "https://www.amazon.com/dp/B07GB6B37N?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Gender": "male",
+    "Longevity": "80",
+    "Sillage": "70",
+    "Accords": [
+      "warm spicy", "vanilla", "lavender",
+      "aromatic", "powdery", "iris",
+      "woody", "amber", "violet"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "40" },
+     {  "name": "night", "value": "90" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "100" },
+     {  "name": "spring",  "value": "40" },
+     {  "name": "summer",  "value": "10" },
+     {  "name": "fall",    "value": "85" }
+    ],
+    "Notes": {
+      "Top": ["Cardamom"],
+      "Middle": ["Lavender", "Iris"],
+      "Base": ["Vanilla"]
+    }
+},
+
+{
+    "ID": 9,
+    "Name": "Black Opium",
+    "Brand": "Yves Saint Laurent",
+    "Release": "2014",
+    "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.25324.2x.avif",
+    "Purchase URL": "https://www.amazon.com/dp/B07GB6B37N?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Gender": "female",
+    "Longevity": "80",
+    "Sillage": "70",
+    "Accords": [
+      "vanilla", "coffee", "sweet",
+      "white floral", "warm spicy", "soft spicy",
+      "woody", "fruity", "balsamic", "powdery"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "40" },
+     {  "name": "night", "value": "95" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "100" },
+     {  "name": "spring",  "value": "25" },
+     {  "name": "summer",  "value": "20" },
+     {  "name": "fall",    "value": "80" }
+    ],
+    "Notes": {
+      "Top": ["Pear", "Pepper"],
+      "Middle": ["Coffee", "Jasmine"],
+      "Base": ["Vanilla", "Patchouli"]
+    }
+},
+
+{
+    "ID": 10,
+    "Name": "Eilish",
+    "Brand": "Billie Eilish",
+    "Release": "2021",
+    "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.70052.2x.avif",
+    "Purchase URL": "https://www.amazon.com/dp/B07GB6B37N?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Gender": "female",
+    "Longevity": "60",
+    "Sillage": "65",
+    "Accords": [
+      "vanilla", "sweet", "warm spicy",
+      "cacao", "powdery", "amber"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "60" },
+     {  "name": "night", "value": "80" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "100" },
+     {  "name": "spring",  "value": "25" },
+     {  "name": "summer",  "value": "20" },
+     {  "name": "fall",    "value": "100" }
+    ],
+    "Notes": {
+      "Top": ["Sugar", "Orange"],
+      "Middle": ["Vanilla", "Cacao", "Rose"],
+      "Base": ["Tonka Bean", "Musk"]
+    }
 }
 ]
+
