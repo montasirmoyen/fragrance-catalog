@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import NavBar from "../../../../components/navbar";
 import fragrances from "../../../../data/fragrances.json";
+import notes_images from "../../../../data/notes.json";
 import Link from "next/link";
 
 type Props = { params: { id: string } };
@@ -100,44 +101,167 @@ export default function FragrancePage({ params }: Props) {
               >
                 Buy Now
               </a>
+
+
             </div>
           </div>
 
-          {/* Season Ranking */}
-          <div className="mt-8">
+          {/* Accord List */}
+          {fragrance.Accords && fragrance.Accords.length > 0 && (
+            <div className="mt-6">
+              <h2 className="text-lg font-semibold mb-2">Main Accords</h2>
+              <p className="text-sm capitalize">
+                {fragrance.Accords.join(", ")}
+              </p>
+            </div>
+          )}
+
+            {/* Season Ranking */}
+            <div className="mt-8">
             <h2 className="text-lg font-semibold mb-2">Season Compatibility</h2>
             <div className="grid grid-cols-2 gap-4">
               {fragrance["Season Ranking"].map((s: any) => (
-                <div key={s.name}>
-                  <p className="capitalize">{s.name}</p>
-                  <ProgressBar value={parseInt(s.value) / 100 * 100} color="bg-blue-400" />
+              <div key={s.name} className="flex items-center gap-3">
+                <Image
+                src={`/${s.name.toLowerCase()}.png`}
+                alt={s.name}
+                width={32}
+                height={32}
+                />
+                <div className="flex-1">
+                <p className="capitalize">{s.name}</p>
+                <ProgressBar value={parseInt(s.value) / 100 * 100} color="bg-blue-400" />
                 </div>
+              </div>
               ))}
             </div>
-          </div>
+            </div>
 
-          {/* Time Ranking */}
-          <div className="mt-8">
+            {/* Time Ranking */}
+            <div className="mt-8">
             <h2 className="text-lg font-semibold mb-2">Time of Day Compatibility</h2>
             {fragrance["Time Ranking"].map((t: any) => (
-              <div key={t.name} className="mb-2">
+              <div key={t.name} className="flex items-center gap-3 mb-2">
+              <Image
+                src={`/${t.name.toLowerCase()}.png`}
+                alt={t.name}
+                width={32}
+                height={32}
+              />
+              <div className="flex-1">
                 <p className="capitalize">{t.name}</p>
                 <ProgressBar value={parseInt(t.value) / 100 * 100} color="bg-yellow-400" />
               </div>
+              </div>
             ))}
-          </div>
+            </div>
 
-          {/* Longevity + Sillage */}
-          <div className="mt-8 grid grid-cols-2 gap-6">
-            <div>
+            {/* Longevity + Sillage */}
+            <div className="mt-8 grid grid-cols-2 gap-6">
+            <div className="flex items-center gap-4">
+              <Image
+              src="/longevity.png"
+              alt="Longevity"
+              width={32}
+              height={32}
+              />
+              <div className="flex-1">
               <h2 className="text-lg font-semibold mb-2">Longevity</h2>
               <ProgressBar value={parseInt(fragrance.Longevity)} color="bg-green-500" />
+              </div>
             </div>
-            <div>
+            <div className="flex items-center gap-4">
+              <Image
+              src="/sillage.png"
+              alt="Sillage"
+              width={32}
+              height={32}
+              />
+              <div className="flex-1">
               <h2 className="text-lg font-semibold mb-2">Sillage</h2>
               <ProgressBar value={parseInt(fragrance.Sillage)} color="bg-red-500" />
+              </div>
             </div>
-          </div>
+            </div>
+
+{/* Note Pyramid */}
+{fragrance.Notes && (
+  <div className="mt-8">
+    <h2 className="text-lg font-semibold mb-4">Fragrance Notes</h2>
+
+    {fragrance.Notes.Top?.length > 0 && (
+      <div className="mb-4">
+        <h3 className="font-medium">Top Notes</h3>
+        <div className="flex flex-wrap gap-2 mt-2">
+          {fragrance.Notes.Top.map((note: string, i: number) => {
+            const imgSrc = notes_images[note as keyof typeof notes_images] ?? "/unknown.png";
+            return (
+              <span key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg text-sm">
+                <Image
+                  src={imgSrc}
+                  alt={note}
+                  width={24}
+                  height={24}
+                  className="object-contain"
+                />
+                {note}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+    )}
+
+    {fragrance.Notes.Middle?.length > 0 && (
+      <div className="mb-4">
+        <h3 className="font-medium">Middle Notes</h3>
+        <div className="flex flex-wrap gap-2 mt-2">
+          {fragrance.Notes.Middle.map((note: string, i: number) => {
+            const imgSrc = notes_images[note as keyof typeof notes_images] ?? "/unknown.png";
+            return (
+              <span key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg text-sm">
+                <Image
+                  src={imgSrc}
+                  alt={note}
+                  width={24}
+                  height={24}
+                  className="object-contain"
+                />
+                {note}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+    )}
+
+    {fragrance.Notes.Base?.length > 0 && (
+      <div>
+        <h3 className="font-medium">Base Notes</h3>
+        <div className="flex flex-wrap gap-2 mt-2">
+          {fragrance.Notes.Base.map((note: string, i: number) => {
+            const imgSrc = notes_images[note as keyof typeof notes_images] ?? "/unknown.png";
+            return (
+              <span key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg text-sm">
+                <Image
+                  src={imgSrc}
+                  alt={note}
+                  width={24}
+                  height={24}
+                  className="object-contain"
+                />
+                {note}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+    )}
+  </div>
+)}
+
+
+
         </div>
       </div>
 
