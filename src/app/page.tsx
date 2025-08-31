@@ -1,9 +1,44 @@
+
 "use client";
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import NavBar from "../../components/navbar";
 import fragrances from "../../data/fragrances.json";
+// The fragrance data is not included in the repo
+/* Example data:
+{
+    "ID": 1,
+    "Name": "Sauvage Eau de Parfum",
+    "Brand": "Christian Dior",
+    "Release": "2015",
+    "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.48100.2x.avif",
+    "Purchase URL": "https://www.amazon.com/dp/B079TQS99Q?tag=awsperfumesearch-20&linkCode=osi&th=1",
+    "Gender": "male",
+    "Longevity": "70",
+    "Sillage": "60",
+    "Accords": [
+      "fresh spicy", "citrus", "amber",
+      "lavender", "musky", "aromatic",
+      "herbal", "anis", "soft spicy", "floral"
+    ],
+    "Time Ranking": [
+     {  "name": "day", "value": "90" },
+     {  "name": "night", "value": "100" }
+    ],
+    "Season Ranking": [
+     {  "name": "winter",  "value": "90" },
+     {  "name": "spring",  "value": "100" },
+     {  "name": "summer",  "value": "90" },
+     {  "name": "fall",    "value": "100" }
+    ],
+    "Notes": {
+      "Top": ["Bergamot"],
+      "Middle": ["Pepper", "Lavender"],
+      "Base": ["Vanilla"]
+    }
+},
+*/
 
 export default function Page() {
   const [search, setSearch] = useState("");

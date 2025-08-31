@@ -41,7 +41,7 @@ function getSimilarFragrances(current: any, all: any[]) {
     for (const n of getAllNotes(f)) {
       if (curSet.has(n)) {
         matches++;
-        if (matches >= 2) return true; // early exit
+        if (matches >= 3) return true; // early exit
       }
     }
     return false;
