@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NavBar from "../../components/navbar";
 import fragrances from "../../data/fragrances.json";
+import './globals.css';
 
 export default function Page() {
   const [search, setSearch] = useState("");
@@ -60,12 +61,12 @@ export default function Page() {
   }, [search, genderFilter, designerFilter, noteFilter, sortBy]);
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      <NavBar />
-
+<main className="min-h-screen bg-gray-50 bg-[url('/background1.png')] bg-cover bg-center bg-fixed">
+     <NavBar />
+ 
       <div className="flex">
         {/* LEFT SIDEBAR */}
-        <aside className="w-64 p-6 bg-white">
+        <aside className="w-64 p-6 bg-white/75 backdrop-blur-md">
           <h2 className="text-lg font-semibold mb-4">Filters</h2>
           <button
             className="text-sm text-red-500 mb-4"
@@ -207,7 +208,7 @@ export default function Page() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {filtered.slice(0, visibleCount).map(f => (
               <Link key={f.ID} href={`/fragrance/${f.ID}`}>
-                <div className="bg-white rounded-2xl shadow-md p-4 flex flex-col hover:shadow-lg transition transform hover:scale-105 cursor-pointer h-[300px]">
+                <div className="bg-white/95  rounded-2xl shadow-md p-4 flex flex-col hover:shadow-lg transition transform hover:scale-105 cursor-pointer h-[300px]">
                   <div className="relative w-full h-48 mb-4">
                     <Image
                       src={f["Image URL"]}

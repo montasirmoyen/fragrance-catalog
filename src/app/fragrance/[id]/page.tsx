@@ -66,7 +66,7 @@ function getBarColor(value: number) {
 function FragranceCard({ fragrance }: { fragrance: any }) {
   return (
     <Link href={`/fragrance/${fragrance.ID}`} className="block">
-      <div className="bg-white shadow rounded-lg p-4 w-48 hover:shadow-lg transition">
+      <div className="bg-white shadow rounded-lg p-4 w-48 hover:shadow-lg transition transform hover:scale-105 cursor-pointer">
         <div className="relative w-full h-32 mb-2">
           <Image
             src={fragrance["Image URL"]}
@@ -88,14 +88,14 @@ export default async function FragrancePage({ params }: Props) {
   if (!fragrance) return notFound();
 
   return (
-    <main className="min-h-screen bg-gray-50">
+<main className="min-h-screen bg-gray-50 bg-[url('/background1.png')] bg-cover bg-center bg-fixed">
       <NavBar />
 
-      <div className="max-w-4xl mx-auto p-8">
+      <div className="max-w-6xl mx-auto p-8">
         <div className="bg-white shadow-md rounded-2xl p-4">
           <div className="flex flex-col md:flex-row gap-6">
 
-            <div className="relative w-100 h-75">
+            <div className="relative w-150 h-125">
               <Image
                 src={fragrance["Image URL"]}
                 alt={fragrance.Name}
@@ -110,8 +110,8 @@ export default async function FragrancePage({ params }: Props) {
                   <Image
                     src={fragrance["Designer Image URL"]}
                     alt={`${fragrance.Brand} Designer`}
-                    width={120}
-                    height={120}
+                    width={150}
+                    height={150}
                     className="object-contain rounded-lg"
                   />
                 </div>
@@ -132,10 +132,12 @@ export default async function FragrancePage({ params }: Props) {
               >
                 Purchase
               </a>
+
+
             </div>
           </div>
 
-          {/* Accord List */}
+                                  {/* Accord List */}
           {fragrance.Accords && fragrance.Accords.length > 0 && (
             <div className="mt-6">
               <h2 className="text-lg font-semibold mt-4">Main Accords</h2>
@@ -144,6 +146,7 @@ export default async function FragrancePage({ params }: Props) {
               </p>
             </div>
           )}
+
 
           <h2 className="text-lg font-semibold mt-4">Ideal Time to Wear</h2>
 
@@ -318,7 +321,7 @@ export default async function FragrancePage({ params }: Props) {
       </div>
 
       {getSimilarFragrances(fragrance, fragrances).length > 0 && (
-        <div className="bg-white shadow-md rounded-2xl p-6 mt-8">
+        <div className="bg-white/50 backdrop-blur-md shadow-md rounded-2xl p-6 mt-8">
           <h2 className="text-lg font-semibold mb-4">This perfume reminds me of</h2>
           <div className="flex gap-4 overflow-x-auto pb-2">
             {getSimilarFragrances(fragrance, fragrances).map((f) => (
@@ -330,7 +333,7 @@ export default async function FragrancePage({ params }: Props) {
 
       {/* More from Designer */}
       {getMoreFromDesigner(fragrance, fragrances).length > 0 && (
-        <div className="bg-white shadow-md rounded-2xl p-6 mt-8">
+        <div className="bg-white/50 backdrop-blur-md shadow-md rounded-2xl p-6 mt-8">
           <h2 className="text-lg font-semibold mb-4">
             More from {fragrance.Brand}
           </h2>
