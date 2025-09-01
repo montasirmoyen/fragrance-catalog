@@ -8,7 +8,7 @@ export default function NavBar() {
     href="/"
     className="text-2xl font-bold text-gray-800 hover:text-blue-300 transition"
   >
-    Fragrance Library
+    Fragrance Catalog
   </Link>
   <p className="text-gray-600 text-sm mt-1">
     Browse through the most popular fragrances

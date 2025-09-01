@@ -88,7 +88,7 @@ export default async function FragrancePage({ params }: Props) {
   if (!fragrance) return notFound();
 
   return (
-<main className="min-h-screen bg-gray-50 bg-[url('/background1.png')] bg-cover bg-center bg-fixed">
+    <main className="min-h-screen bg-gray-50 bg-[url('/background1.png')] bg-cover bg-center bg-fixed">
       <NavBar />
 
       <div className="max-w-6xl mx-auto p-8">
@@ -137,7 +137,7 @@ export default async function FragrancePage({ params }: Props) {
             </div>
           </div>
 
-                                  {/* Accord List */}
+          {/* Accord List */}
           {fragrance.Accords && fragrance.Accords.length > 0 && (
             <div className="mt-6">
               <h2 className="text-lg font-semibold mt-4">Main Accords</h2>
@@ -344,6 +344,11 @@ export default async function FragrancePage({ params }: Props) {
           </div>
         </div>
       )}
+
+      <footer className="text-center text-sm text-gray-500 mt-8 mb-4">
+        Images sourced from <a href="https://www.fragrantica.com/" target="_blank" rel="noopener noreferrer" className="underline">Fragrantica</a>.
+        All rights reserved to their respective owners.
+      </footer>
     </main>
   );
 }

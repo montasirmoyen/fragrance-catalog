@@ -61,9 +61,9 @@ export default function Page() {
   }, [search, genderFilter, designerFilter, noteFilter, sortBy]);
 
   return (
-<main className="min-h-screen bg-gray-50 bg-[url('/background1.png')] bg-cover bg-center bg-fixed">
-     <NavBar />
- 
+    <main className="min-h-screen bg-gray-50 bg-[url('/background1.png')] bg-cover bg-center bg-fixed">
+      <NavBar />
+
       <div className="flex">
         {/* LEFT SIDEBAR */}
         <aside className="w-64 p-6 bg-white/75 backdrop-blur-md">
@@ -240,6 +240,11 @@ export default function Page() {
           )}
         </section>
       </div>
+
+      <footer className="text-center text-sm text-gray-500 mt-8 mb-4">
+        Images sourced from <a href="https://www.fragrantica.com/" target="_blank" rel="noopener noreferrer" className="underline">Fragrantica</a>.
+        All rights reserved to their respective owners.
+      </footer>
     </main>
   );
 }
