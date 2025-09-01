@@ -81,9 +81,9 @@ export default function Page() {
 
           {/* Sort */}
           <div className="mb-6">
-            <label className="block text-sm font-medium mb-1">Sort by</label>
+            <label className="block font-medium mb-1">Sort by</label>
             <select
-              className="w-full border rounded p-2"
+              className="text-sm w-full h-10 border rounded p-2"
               value={sortBy}
               onChange={e => setSortBy(e.target.value)}
             >
@@ -117,7 +117,7 @@ export default function Page() {
               <input
                 type="text"
                 placeholder="Search designers..."
-                className="w-full border rounded p-1 pr-8"
+                className="text-sm w-full border rounded p-1 pr-8"
                 value={designerSearch}
                 onChange={(e) => setDesignerSearch(e.target.value)}
               />
@@ -154,7 +154,7 @@ export default function Page() {
               <input
                 type="text"
                 placeholder="Search notes..."
-                className="w-full border rounded p-1 pr-8"
+                className="text-sm w-full border rounded p-1 pr-8"
                 value={noteSearch}
                 onChange={(e) => setNoteSearch(e.target.value)}
               />
