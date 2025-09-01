@@ -3,19 +3,36 @@ import Image from "next/image";
 import NavBar from "../../../../components/navbar";
 import fragrances from "../../../../data/fragrances.json";
 import notes_images from "../../../../data/notes.json";
+import accords from "../../../../data/accords.json";
 import Link from "next/link";
 
 type Props = { params: { id: string } };
 
-function ProgressBar({ value, color }: { value: number; color: string }) {
+const ProgressBar = ({ value, color }: { value: number; color: string }) => {
+  const isTailwindClass = color.startsWith("bg-"); // quick check
+
   return (
-    <div className="w-full bg-gray-300 rounded-full h-2">
+    <div className="w-full h-2 bg-gray-200 rounded">
       <div
-        className={`h-2 rounded-full ${color}`}
-        style={{ width: `${value}%` }}
+        className={`h-2 rounded ${isTailwindClass ? color : ""}`}
+        style={{
+          width: `${value}%`,
+          backgroundColor: isTailwindClass ? undefined : color, // use custom hex/rgb/hsl
+        }}
       />
     </div>
   );
+};
+
+function getTextColor(hex: string) {
+  // quick luminance check for readability
+  const c = hex.substring(1); // strip #
+  const rgb = parseInt(c, 16);
+  const r = (rgb >> 16) & 0xff;
+  const g = (rgb >> 8) & 0xff;
+  const b = rgb & 0xff;
+  const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+  return luminance > 150 ? "black" : "white";
 }
 
 function getAllNotes(f: any): string[] {
@@ -56,11 +73,11 @@ function genderToProperCase(g: string) {
 }
 
 function getBarColor(value: number) {
-  if (value < 25) return "bg-red-500"
-  if (value < 40) return "bg-orange-400"
-  if (value < 60) return "bg-yellow-400"
-  if (value < 85) return "bg-green-500"
-  return "bg-blue-500"
+  if (value < 25) return "#ff4d4f"    // custom red
+  if (value < 40) return "#fa8c16"    // custom orange
+  if (value < 60) return "#fadb14"    // custom yellow
+  if (value < 85) return "#52c41a"    // custom green
+  return "#1890ff"                    // custom blue
 }
 
 function FragranceCard({ fragrance }: { fragrance: any }) {
@@ -93,9 +110,9 @@ export default async function FragrancePage({ params }: Props) {
 
       <div className="max-w-6xl mx-auto p-8">
         <div className="bg-white shadow-md rounded-2xl p-4">
+          
           <div className="flex flex-col md:flex-row gap-6">
-
-            <div className="relative w-150 h-125">
+            <div className="relative w-150 h-150">
               <Image
                 src={fragrance["Image URL"]}
                 alt={fragrance.Name}
@@ -103,15 +120,14 @@ export default async function FragrancePage({ params }: Props) {
                 className="object-contain rounded-lg"
               />
             </div>
-
             <div>
               {fragrance["Designer Image URL"] && (
-                <div className="mt-4">
+                <div>
                   <Image
                     src={fragrance["Designer Image URL"]}
                     alt={`${fragrance.Brand} Designer`}
                     width={150}
-                    height={150}
+                    height={100}
                     className="object-contain rounded-lg"
                   />
                 </div>
@@ -133,20 +149,32 @@ export default async function FragrancePage({ params }: Props) {
                 Purchase
               </a>
 
+              {/* Accord Progress Bars */}
+              {fragrance.Accords && fragrance.Accords.length > 0 && (
+                <div className="mt-4">
+                  <h2 className="text-sm font-semibold">Main Accords</h2>
+                  <div className="flex flex-col gap-1 mt-2">
+                    {fragrance.Accords.map((accord, index) => {
+                      const key = accord.toLowerCase() as keyof typeof accords;
+                      const color = accords[key] ?? "#ccc";
+                      const textColor = getTextColor(color);
+                      const width = `${Math.max(50, 100 - index * 8)}%`;
 
+                      return (
+                        <div
+                          key={accord}
+                          className="text-center rounded-lg px-3 py-1 text-sm font-medium lowercase"
+                          style={{ backgroundColor: color, color: textColor, width }}
+                        >
+                          {accord}
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-
-          {/* Accord List */}
-          {fragrance.Accords && fragrance.Accords.length > 0 && (
-            <div className="mt-6">
-              <h2 className="text-lg font-semibold mt-4">Main Accords</h2>
-              <p className="text-md capitalize">
-                {fragrance.Accords.join(", ")}
-              </p>
-            </div>
-          )}
-
 
           <h2 className="text-lg font-semibold mt-4">Ideal Time to Wear</h2>
 
