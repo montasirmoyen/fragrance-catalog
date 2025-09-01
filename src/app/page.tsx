@@ -10,6 +10,7 @@ import './globals.css';
 export default function Page() {
   const [search, setSearch] = useState("");
   const [genderFilter, setGenderFilter] = useState<string | null>(null);
+  const [seasonFilter, setSeasonFilter] = useState<string | null>(null);
   const [designerFilter, setDesignerFilter] = useState<string | null>(null);
   const [noteFilter, setNoteFilter] = useState<string | null>(null);
   const [designerSearch, setDesignerSearch] = useState("");
@@ -44,6 +45,14 @@ export default function Page() {
       if (genderFilter && f.Gender !== genderFilter) return false;
       if (designerFilter && f.Brand !== designerFilter) return false;
       if (noteFilter && !Object.values(f.Notes).flat().includes(noteFilter)) return false;
+      if (seasonFilter) {
+        const seasonEntry = f["Season Ranking"]?.find(
+          (s: { name: string; value: string }) => s.name.toLowerCase() === seasonFilter.toLowerCase()
+        );
+        if (!seasonEntry) return false;
+        const seasonValue = Number(seasonEntry.value);
+        if (seasonValue <= 90) return false;
+      }
       return true;
     });
 
@@ -58,7 +67,7 @@ export default function Page() {
     }
 
     return results;
-  }, [search, genderFilter, designerFilter, noteFilter, sortBy]);
+  }, [search, genderFilter, designerFilter, noteFilter, seasonFilter, sortBy]);
 
   return (
     <main className="min-h-screen bg-gray-50 bg-[url('/background1.png')] bg-cover bg-center bg-fixed">
@@ -110,6 +119,24 @@ export default function Page() {
               </button>
             ))}
           </div>
+
+           {/* Season */}
+      <div className="mb-6">
+        <p className="font-medium mb-2">Season</p>
+        {["Fall", "Spring", "Summer", "Winter"].map(season => (
+          <button
+            key={season}
+            className={`block w-full text-sm text-left px-1 py-0.5 rounded hover:bg-gray-100 ${
+              seasonFilter === season ? "bg-purple-100 font-semibold" : ""
+            }`}
+            onClick={() =>
+              setSeasonFilter(seasonFilter === season ? null : season)
+            }
+          >
+            {season}
+          </button>
+        ))}
+      </div>
 
           {/* Designers */}
           <div className="mb-6">

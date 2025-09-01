@@ -9,7 +9,7 @@ import Link from "next/link";
 type Props = { params: { id: string } };
 
 const ProgressBar = ({ value, color }: { value: number; color: string }) => {
-  const isTailwindClass = color.startsWith("bg-"); // quick check
+  const isTailwindClass = color.startsWith("bg-");
 
   return (
     <div className="w-full h-2 bg-gray-200 rounded">
@@ -17,16 +17,46 @@ const ProgressBar = ({ value, color }: { value: number; color: string }) => {
         className={`h-2 rounded ${isTailwindClass ? color : ""}`}
         style={{
           width: `${value}%`,
-          backgroundColor: isTailwindClass ? undefined : color, // use custom hex/rgb/hsl
+          backgroundColor: isTailwindClass ? undefined : color,
         }}
       />
     </div>
   );
 };
 
+function isNewFragrance(releaseYear: string) {
+  const currentYear = new Date().getFullYear();
+  return currentYear - parseInt(releaseYear, 10) <= 1;
+}
+
+function returnDesc(f: any) {
+  const firstAccord = f.Accords[0] ?? "fragrance";
+
+  let description = `<strong>${f.Name}</strong> by <strong>${f.Brand}</strong> is a ${firstAccord} fragrance. `;
+
+  if (isNewFragrance(f.Release)) {
+    description += "This is a new fragrance. ";
+  }
+
+  description += `${f.Name} was launched in ${f.Release}. `;
+
+  if (f.Notes.Top?.length) {
+    description += `Top notes are ${f.Notes.Top.join(", ")}; `;
+  }
+
+  if (f.Notes.Middle?.length) {
+    description += `middle notes are ${f.Notes.Middle.join(", ")}; `;
+  }
+
+  if (f.Notes.Base?.length) {
+    description += `base notes are ${f.Notes.Base.join(", ")}.`;
+  }
+
+  return description.trim();
+}
+
 function getTextColor(hex: string) {
-  // quick luminance check for readability
-  const c = hex.substring(1); // strip #
+  const c = hex.substring(1);
   const rgb = parseInt(c, 16);
   const r = (rgb >> 16) & 0xff;
   const g = (rgb >> 8) & 0xff;
@@ -73,11 +103,11 @@ function genderToProperCase(g: string) {
 }
 
 function getBarColor(value: number) {
-  if (value < 25) return "#ff4d4f"    // custom red
-  if (value < 40) return "#fa8c16"    // custom orange
-  if (value < 60) return "#fadb14"    // custom yellow
-  if (value < 85) return "#52c41a"    // custom green
-  return "#1890ff"                    // custom blue
+  if (value < 25) return "#ff4d4f"
+  if (value < 40) return "#fa8c16"
+  if (value < 60) return "#fadb14"
+  if (value < 85) return "#52c41a"
+  return "#1890ff"
 }
 
 function FragranceCard({ fragrance }: { fragrance: any }) {
@@ -110,7 +140,7 @@ export default async function FragrancePage({ params }: Props) {
 
       <div className="max-w-6xl mx-auto p-8">
         <div className="bg-white shadow-md rounded-2xl p-4">
-          
+
           <div className="flex flex-col md:flex-row gap-6">
             <div className="relative w-150 h-150">
               <Image
@@ -175,6 +205,27 @@ export default async function FragrancePage({ params }: Props) {
               )}
             </div>
           </div>
+
+          <p
+            className="mt-4 text-gray-700"
+            dangerouslySetInnerHTML={{ __html: returnDesc(fragrance) }}
+          />
+
+          {fragrance.Perfumer && (
+            <div className="flex items-center gap-3 mt-4">
+              <h3 className="text-md font-semibold">Perfumer</h3>
+              <div className="flex items-center gap-2">
+                <Image
+                  src={fragrance["Perfumer Image URL"]}
+                  alt={fragrance.Perfumer}
+                  width={40}
+                  height={40}
+                  className="rounded-full object-cover"
+                />
+                <span className="text-gray-800">{fragrance.Perfumer}</span>
+              </div>
+            </div>
+          )}
 
           <h2 className="text-lg font-semibold mt-4">Ideal Time to Wear</h2>
 
