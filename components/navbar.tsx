@@ -2,9 +2,9 @@ import Link from "next/link";
 
 export default function NavBar() {
   return (
-    <nav className="bg-white px-6 py-6 flex justify-between items-center">
-      <Link href="/" className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition">
-        Fragrance Catalog
+    <nav className="bg-white px-6 py-4 flex justify-center items-center">
+      <Link href="/" className="text-2xl font-bold text-gray-800 hover:text-blue-300 transition">
+        Fragrance Library
       </Link>
     </nav>
   );

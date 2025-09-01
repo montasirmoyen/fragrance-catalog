@@ -138,16 +138,18 @@ export default async function FragrancePage({ params }: Props) {
           {/* Accord List */}
           {fragrance.Accords && fragrance.Accords.length > 0 && (
             <div className="mt-6">
-              <h2 className="text-lg font-semibold mb-2">Main Accords</h2>
+              <h2 className="text-lg font-semibold mt-4">Main Accords</h2>
               <p className="text-md capitalize">
                 {fragrance.Accords.join(", ")}
               </p>
             </div>
           )}
 
+          <h2 className="text-lg font-semibold mt-4">Ideal Time to Wear</h2>
+
           {/* Season Ranking */}
           <div className="mt-2">
-            <h2 className="text-lg font-semibold mb-2">Season Compatibility</h2>
+            {/* <h2 className="text-lg font-semibold">Performance</h2> */}
             <div className="grid grid-cols-2 gap-4">
               {fragrance["Season Ranking"].map((s: any) => (
                 <div key={s.name} className="flex items-center gap-3">
@@ -176,10 +178,9 @@ export default async function FragrancePage({ params }: Props) {
           </div>
 
           {/* Time Ranking */}
-          <div className="mt-4">
-            <h2 className="text-lg font-semibold mb-2">Time of Day Compatibility</h2>
+          <div className="mt-4 grid grid-cols-2 gap-6">
             {fragrance["Time Ranking"].map((t: any) => (
-              <div key={t.name} className="flex items-center gap-3 mb-4">
+              <div key={t.name} className="flex items-center gap-3">
                 <Image
                   src={`/${t.name.toLowerCase()}.png`}
                   alt={t.name}
@@ -191,17 +192,19 @@ export default async function FragrancePage({ params }: Props) {
                 />
                 <div className="flex-1">
                   <p className="capitalize">{t.name}</p>
-                  <ProgressBar value={parseInt(t.value) / 100 * 100} color={getBarColor(parseInt(t.value) / 100 * 100)} />
-
+                  <ProgressBar
+                    value={(parseInt(t.value) / 100) * 100}
+                    color={getBarColor((parseInt(t.value) / 100) * 100)}
+                  />
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Longevity + Sillage */}
-          <h2 className="text-lg font-semibold">Performance</h2>
-          <div className="mt-2 grid grid-cols-2 gap-6">
 
+          {/* Performance */}
+          <h2 className="text-lg font-semibold mt-4">Performance</h2>
+          <div className="mt-2 grid grid-cols-2 gap-6">
             <div className="flex items-center gap-3">
               <Image
                 src="/longevity.png"
@@ -233,27 +236,26 @@ export default async function FragrancePage({ params }: Props) {
                 <ProgressBar value={parseInt(fragrance.Sillage)} color={getBarColor(parseInt(fragrance.Sillage))} />
               </div>
             </div>
-
           </div>
 
-          {/* Note Pyramid */}
+          {/* Fragrance Notes */}
           {fragrance.Notes && (
-            <div className="mt-4">
-              <h2 className="text-lg font-semibold mb-4 text-center">Fragrance Notes</h2>
+            <div className="mt-6">
+              <h2 className="text-2xl font-semibold mb-4 text-center">Fragrance Notes</h2>
 
               {fragrance.Notes.Top?.length > 0 && (
                 <div className="mb-4 text-center">
-                  <h3 className="font-medium">Top Notes</h3>
+                  <h3 className="text-xl font-medium">Top Notes</h3>
                   <div className="flex flex-wrap gap-2 mt-2 justify-center">
                     {fragrance.Notes.Top.map((note: string, i: number) => {
                       const imgSrc = notes_images[note as keyof typeof notes_images] ?? "/unknown.png";
                       return (
-                        <span key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg text-sm">
+                        <span key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg text-md">
                           <Image
                             src={imgSrc}
                             alt={note}
-                            width={24}
-                            height={24}
+                            width={48}
+                            height={48}
                             className="object-contain"
                           />
                           {note}
@@ -266,17 +268,17 @@ export default async function FragrancePage({ params }: Props) {
 
               {fragrance.Notes.Middle?.length > 0 && (
                 <div className="mb-4 text-center">
-                  <h3 className="font-medium">Middle Notes</h3>
+                  <h3 className="text-xl font-medium">Middle Notes</h3>
                   <div className="flex flex-wrap gap-2 mt-2 justify-center">
                     {fragrance.Notes.Middle.map((note: string, i: number) => {
                       const imgSrc = notes_images[note as keyof typeof notes_images] ?? "/unknown.png";
                       return (
-                        <span key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg text-sm">
+                        <span key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg text-md">
                           <Image
                             src={imgSrc}
                             alt={note}
-                            width={24}
-                            height={24}
+                            width={48}
+                            height={48}
                             className="object-contain"
                           />
                           {note}
@@ -289,17 +291,17 @@ export default async function FragrancePage({ params }: Props) {
 
               {fragrance.Notes.Base?.length > 0 && (
                 <div className="text-center">
-                  <h3 className="font-medium">Base Notes</h3>
+                  <h3 className="text-xl font-medium">Base Notes</h3>
                   <div className="flex flex-wrap gap-2 mt-2 justify-center">
                     {fragrance.Notes.Base.map((note: string, i: number) => {
                       const imgSrc = notes_images[note as keyof typeof notes_images] ?? "/unknown.png";
                       return (
-                        <span key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg text-sm">
+                        <span key={i} className="flex items-center gap-2 px-3 py-1 rounded-lg text-md">
                           <Image
                             src={imgSrc}
                             alt={note}
-                            width={24}
-                            height={24}
+                            width={48}
+                            height={48}
                             className="object-contain"
                           />
                           {note}

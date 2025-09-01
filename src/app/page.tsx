@@ -50,7 +50,7 @@ export default function Page() {
       results = results.sort((a, b) => Number(b.Longevity) - Number(a.Longevity));
     } else if (sortBy === "Highest sillage") {
       results = results.sort((a, b) => Number(b.Sillage) - Number(a.Sillage));
-     } else if (sortBy === "Newest") {
+    } else if (sortBy === "Newest") {
       results = results.sort((a, b) => Number(b.Release) - Number(a.Release));
     } else {
       results = results.sort((a, b) => a.ID - b.ID);
@@ -83,15 +83,15 @@ export default function Page() {
           <div className="mb-6">
             <label className="block text-sm font-medium mb-1">Sort by</label>
             <select
-  className="w-full border rounded p-2"
-  value={sortBy}
-  onChange={e => setSortBy(e.target.value)}
->
-  <option>Most popular</option>
-  <option>Newest</option>
-  <option>Longest longevity</option>
-  <option>Highest sillage</option>
-</select>
+              className="w-full border rounded p-2"
+              value={sortBy}
+              onChange={e => setSortBy(e.target.value)}
+            >
+              <option>Most popular</option>
+              <option>Newest</option>
+              <option>Longest longevity</option>
+              <option>Highest sillage</option>
+            </select>
 
           </div>
 
@@ -101,9 +101,8 @@ export default function Page() {
             {["male", "female", "unisex"].map(g => (
               <button
                 key={g}
-                className={`block w-full text-sm text-left px-1 py-0.5 rounded hover:bg-gray-100 ${
-                  genderFilter === g ? "bg-purple-100 font-semibold" : ""
-                }`}
+                className={`block w-full text-sm text-left px-1 py-0.5 rounded hover:bg-gray-100 ${genderFilter === g ? "bg-purple-100 font-semibold" : ""
+                  }`}
                 onClick={() => setGenderFilter(genderFilter === g ? null : g)}
               >
                 {g}
@@ -136,9 +135,8 @@ export default function Page() {
                 .map(([d, count]) => (
                   <button
                     key={d}
-                    className={`block w-full text-left px-1 py-0.5 rounded hover:bg-gray-100 ${
-                      designerFilter === d ? "bg-blue-100 font-semibold" : ""
-                    }`}
+                    className={`block w-full text-left px-1 py-0.5 rounded hover:bg-gray-100 ${designerFilter === d ? "bg-blue-100 font-semibold" : ""
+                      }`}
                     onClick={() =>
                       setDesignerFilter(designerFilter === d ? null : d)
                     }
@@ -175,9 +173,8 @@ export default function Page() {
                 .map(([note, count]) => (
                   <button
                     key={note}
-                    className={`block w-full text-left px-1 py-0.5 rounded hover:bg-gray-100 ${
-                      noteFilter === note ? "bg-green-100 font-semibold" : ""
-                    }`}
+                    className={`block w-full text-left px-1 py-0.5 rounded hover:bg-gray-100 ${noteFilter === note ? "bg-green-100 font-semibold" : ""
+                      }`}
                     onClick={() =>
                       setNoteFilter(noteFilter === note ? null : note)
                     }
@@ -197,7 +194,7 @@ export default function Page() {
               placeholder="Search fragrance name or designer..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="w-full border rounded-lg p-3 shadow-sm pr-10"
+              className="text-md w-full border rounded-lg p-3 shadow-md pr-10"
             />
             <img
               src="/search.png"
@@ -210,19 +207,19 @@ export default function Page() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {filtered.slice(0, visibleCount).map(f => (
               <Link key={f.ID} href={`/fragrance/${f.ID}`}>
-<div className="bg-white rounded-2xl shadow-md p-4 flex flex-col hover:shadow-lg transition transform hover:scale-105 cursor-pointer h-[300px]">
+                <div className="bg-white rounded-2xl shadow-md p-4 flex flex-col hover:shadow-lg transition transform hover:scale-105 cursor-pointer h-[300px]">
                   <div className="relative w-full h-48 mb-4">
-  <Image
-    src={f["Image URL"]}
-    alt={f.Name}
-    fill
-    className="object-contain rounded-lg"
-  />
-</div>
+                    <Image
+                      src={f["Image URL"]}
+                      alt={f.Name}
+                      fill
+                      className="object-contain rounded-lg"
+                    />
+                  </div>
                   <h2 className="text-lg font-semibold text-gray-900 line-clamp-2">
-  {f.Name}
-</h2>
-<p className="text-gray-600 line-clamp-1">{f.Brand}</p>
+                    {f.Name}
+                  </h2>
+                  <p className="text-gray-600 line-clamp-1">{f.Brand}</p>
                   {/* <p className="text-green-700 font-medium mt-2">${f.Price}</p> */}
                 </div>
               </Link>
