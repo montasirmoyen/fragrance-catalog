@@ -140,8 +140,7 @@ export default async function FragrancePage({ params }: Props) {
       <NavBar />
 
       <div className="max-w-6xl mx-auto p-8">
-        <div className="bg-white shadow-md rounded-2xl p-4">
-
+        <div className="bg-white/75 shadow-lg rounded-2xl p-4">
           <div className="flex flex-col md:flex-row gap-6">
             <div className="relative w-150 h-150">
               <Image
@@ -232,7 +231,7 @@ export default async function FragrancePage({ params }: Props) {
             images={fragrance['Fragrance Images']}
             fragranceName={fragrance.Name}
           />
-          
+
           <h2 className="text-lg font-semibold mt-4">Ideal Time to Wear</h2>
 
           {/* Season Ranking */}

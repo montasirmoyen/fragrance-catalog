@@ -92,7 +92,7 @@ export default function Page() {
           <div className="mb-6">
             <label className="block font-medium mb-1">Sort by</label>
             <select
-              className="text-sm w-full h-10 border rounded p-2"
+              className="text-sm w-full h-10 border rounded p-2 bg-white/50"
               value={sortBy}
               onChange={e => setSortBy(e.target.value)}
             >
@@ -119,28 +119,27 @@ export default function Page() {
             ))}
           </div>
 
-           {/* Season */}
-      <div className="mb-6">
-        <p className="font-medium mb-2">Season</p>
-        {["Fall", "Spring", "Summer", "Winter"].map(season => (
-          <button
-            key={season}
-            className={`block w-full text-sm text-left px-1 py-0.5 rounded hover:bg-gray-100 ${
-              seasonFilter === season ? "bg-purple-100 font-semibold" : ""
-            }`}
-            onClick={() =>
-              setSeasonFilter(seasonFilter === season ? null : season)
-            }
-          >
-            {season}
-          </button>
-        ))}
-      </div>
+          {/* Season */}
+          <div className="mb-6">
+            <p className="font-medium mb-2">Season</p>
+            {["Fall", "Spring", "Summer", "Winter"].map(season => (
+              <button
+                key={season}
+                className={`block w-full text-sm text-left px-1 py-0.5 rounded hover:bg-gray-100 ${seasonFilter === season ? "bg-purple-100 font-semibold" : ""
+                  }`}
+                onClick={() =>
+                  setSeasonFilter(seasonFilter === season ? null : season)
+                }
+              >
+                {season}
+              </button>
+            ))}
+          </div>
 
           {/* Designers */}
           <div className="mb-6">
             <p className="font-medium mb-2">Designers</p>
-            <div className="relative mb-2">
+            <div className="relative mb-2 bg-white/50">
               <input
                 type="text"
                 placeholder="Search designers..."
@@ -177,7 +176,7 @@ export default function Page() {
           {/* Notes */}
           <div>
             <p className="font-medium mb-2">Notes</p>
-            <div className="relative mb-2">
+            <div className="relative mb-2 bg-white/50">
               <input
                 type="text"
                 placeholder="Search notes..."
@@ -215,10 +214,10 @@ export default function Page() {
 
         {/* RIGHT MAIN */}
         <section className="flex-1 p-8">
-          <div className="mb-6 relative">
+          <div className="bg-white/50 backdrop-blur-md mb-6 relative">
             <input
               type="text"
-              placeholder="Search fragrance name or designer..."
+              placeholder="Search for fragrances..."
               value={search}
               onChange={e => setSearch(e.target.value)}
               className="text-md w-full border rounded-lg p-3 shadow-md pr-10"
@@ -231,10 +230,10 @@ export default function Page() {
           </div>
 
           {/* Fragrance grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {filtered.slice(0, visibleCount).map(f => (
               <Link key={f.ID} href={`/fragrance/${f.ID}`}>
-                <div className="bg-white/95  rounded-2xl shadow-md p-4 flex flex-col hover:shadow-lg transition transform hover:scale-105 cursor-pointer h-[300px]">
+                <div className="bg-white/95 rounded-2xl shadow-lg p-4 flex flex-col hover:shadow-lg transition transform hover:scale-105 cursor-pointer h-[300px]">
                   <div className="relative w-full h-48 mb-4">
                     <Image
                       src={f["Image URL"]}
@@ -264,13 +263,13 @@ export default function Page() {
               </button>
             </div>
           )}
+
+          <footer className="text-center text-sm text-gray-500 mt-8 mb-4">
+            Images sourced from <a href="https://www.fragrantica.com/" target="_blank" rel="noopener noreferrer" className="underline">Fragrantica</a>.
+            All rights reserved to their respective owners.
+          </footer>
         </section>
       </div>
-
-      <footer className="text-center text-sm text-gray-500 mt-8 mb-4">
-        Images sourced from <a href="https://www.fragrantica.com/" target="_blank" rel="noopener noreferrer" className="underline">Fragrantica</a>.
-        All rights reserved to their respective owners.
-      </footer>
     </main>
   );
 }
