@@ -408,8 +408,6 @@
         "Name": "Bubble Bath",
         "Brand": "Maison Martin Margiela",
         "Release": "2020",
-        "Perfumer": "Jacques Polge",
-        "Perfumer Image URL": "https://frgs.me/mdimg/nosevi/fit.134.jpg",
         "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.60105.2x.avif",
         "Designer Image URL": "https://fimgs.net/mdimg/dizajneri/m.845.jpg",
         "Purchase URL": "https://www.amazon.com/dp/B08GYBCQYR?tag=awsperfumesearch-20&linkCode=osi&th=1",
@@ -602,6 +600,67 @@
             ],
             "Base": [
                 "Vanilla",
+                "Patchouli"
+            ]
+        }
+    },
+    {
+        "ID": 10,
+        "Name": "Eros Energy",
+        "Brand": "Versace",
+        "Release": "2024",
+        "Image URL": "https://fimgs.net/mdimg/perfume-thumbs/375x500.92647.2x.avif",
+        "Designer Image URL": "https://fimgs.net/mdimg/dizajneri/m.97.jpg",
+        "Purchase URL": "https://www.amazon.com/dp/B0DFVGMXT5?tag=awsperfumesearch-20&linkCode=osi&th=1&psc=1",
+        "Gender": "male",
+        "Longevity": "80",
+        "Sillage": "70",
+        "Accords": [
+            "citrus",
+            "aromatic",
+            "fresh spicy",
+            "musky",
+            "woody"
+        ],
+        "Time Ranking": [
+            {
+                "name": "day",
+                "value": "75"
+            },
+            {
+                "name": "night",
+                "value": "25"
+            }
+        ],
+        "Season Ranking": [
+            {
+                "name": "winter",
+                "value": "10"
+            },
+            {
+                "name": "spring",
+                "value": "70"
+            },
+            {
+                "name": "summer",
+                "value": "95"
+            },
+            {
+                "name": "fall",
+                "value": "25"
+            }
+        ],
+        "Notes": {
+            "Top": [
+                "Lemon",
+                "Orange"
+            ],
+            "Middle": [
+                "Pepper",
+                "Amberwood"
+            ],
+            "Base": [
+                "Musk",
                 "Patchouli"
             ]
         }
