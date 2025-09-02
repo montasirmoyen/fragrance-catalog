@@ -12,6 +12,16 @@
         "Gender": "male",
         "Longevity": "70",
         "Sillage": "60",
+        "Fragrance Images": [
+            {
+                "author": "Llaszlo",
+                "url": "https://fimgs.net/photogram/p1200/v8/5m/UqzCEnMznjcHPJaK.jpg"
+            },
+            {
+                "author": "Llaszlo",
+                "url": "https://fimgs.net/photogram/p1200/ho/hv/MnM6yKILr3hg5Rkg.jpg"
+            }
+        ],
         "Accords": [
             "fresh spicy",
             "citrus",

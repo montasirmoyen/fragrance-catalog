@@ -5,6 +5,7 @@ import fragrances from "../../../../data/fragrances.json";
 import notes_images from "../../../../data/notes.json";
 import accords from "../../../../data/accords.json";
 import Link from "next/link";
+import FragranceGalleryClient from "../../../../components/gallery";
 
 type Props = { params: { id: string } };
 
@@ -227,6 +228,11 @@ export default async function FragrancePage({ params }: Props) {
             </div>
           )}
 
+          <FragranceGalleryClient
+            images={fragrance['Fragrance Images']}
+            fragranceName={fragrance.Name}
+          />
+          
           <h2 className="text-lg font-semibold mt-4">Ideal Time to Wear</h2>
 
           {/* Season Ranking */}
