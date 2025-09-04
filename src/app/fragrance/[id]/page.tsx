@@ -288,7 +288,6 @@ export default async function FragrancePage({ params }: Props) {
             ))}
           </div>
 
-
           {/* Performance */}
           <h2 className="text-lg font-semibold mt-4">Performance</h2>
           <div className="mt-2 grid grid-cols-2 gap-6">

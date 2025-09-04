@@ -6,7 +6,7 @@ export default function NavBar() {
       <div className="text-center">
   <Link
     href="/"
-    className="text-2xl font-bold text-gray-800 hover:text-blue-300 transition"
+    className="text-2xl font-bold text-gray-800 hover:text-red-300 transition"
   >
     Fragrance Catalog
   </Link>
