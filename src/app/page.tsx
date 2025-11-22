@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NavBar from "../../components/navbar";
 import fragrances from "../../data/fragrances.json";
-import './globals.css';
+import { Menu, X } from "lucide-react";
 
 export default function Page() {
   const [search, setSearch] = useState("");
@@ -16,6 +16,7 @@ export default function Page() {
   const [noteSearch, setNoteSearch] = useState("");
   const [sortBy, setSortBy] = useState("Most popular");
   const [visibleCount, setVisibleCount] = useState(20);
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
   const designers = useMemo(() => {
     const brands: Record<string, number> = {};
@@ -68,31 +69,62 @@ export default function Page() {
     return results;
   }, [search, genderFilter, designerFilter, noteFilter, seasonFilter, sortBy]);
 
+  const clearFilters = () => {
+    setGenderFilter(null);
+    setDesignerFilter(null);
+    setNoteFilter(null);
+    setSeasonFilter(null);
+    setSearch("");
+    setDesignerSearch("");
+    setNoteSearch("");
+  };
+
+  const hasActiveFilters = genderFilter || designerFilter || noteFilter || seasonFilter || search;
+
   return (
-    <main className="min-h-screen bg-gray-50 bg-[url('/background1.png')] bg-cover bg-center bg-fixed">
+    <main className="min-h-screen bg-[url('/background1.png')] bg-cover bg-center bg-fixed">
       <NavBar />
 
-      <div className="flex">
+      {/* Mobile filter toggle */}
+      <div className="lg:hidden sticky top-0 z-10 bg-white/90 backdrop-blur-sm border-b">
+        <button
+          onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+          className="w-full px-4 py-3 flex items-center justify-between font-medium"
+        >
+          <span>Filters</span>
+          {isFiltersOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+      </div>
+
+      <div className="flex flex-col lg:flex-row">
         {/* LEFT SIDEBAR */}
-        <aside className="w-64 p-6 bg-white/75 backdrop-blur-md">
-          <h2 className="text-lg font-semibold mb-4">Filters</h2>
-          <button
-            className="text-sm text-red-500 mb-4"
-            onClick={() => {
-              setGenderFilter(null);
-              setDesignerFilter(null);
-              setNoteFilter(null);
-              setSearch("");
-            }}
-          >
-            Clear all filters
-          </button>
+        <aside className={`lg:w-64 p-4 lg:p-6 bg-white/75 backdrop-blur-md transition-transform duration-300 ${
+          isFiltersOpen ? 'block' : 'hidden lg:block'
+        }`}>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-semibold">Filters</h2>
+            <button
+              onClick={() => setIsFiltersOpen(false)}
+              className="lg:hidden"
+            >
+              <X size={20} />
+            </button>
+          </div>
+          
+          {hasActiveFilters && (
+            <button
+              onClick={clearFilters}
+              className="text-sm text-red-600 hover:text-red-700 mb-4 font-medium"
+            >
+              Clear all filters
+            </button>
+          )}
 
           {/* Sort */}
           <div className="mb-6">
-            <label className="block font-medium mb-1">Sort by</label>
+            <label className="block font-medium mb-2">Sort by</label>
             <select
-              className="text-sm w-full h-10 border rounded p-2 bg-white/50"
+              className="w-full h-10 border rounded-lg px-3 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={sortBy}
               onChange={e => setSortBy(e.target.value)}
             >
@@ -101,59 +133,68 @@ export default function Page() {
               <option>Longest longevity</option>
               <option>Highest sillage</option>
             </select>
-
           </div>
 
           {/* Gender */}
           <div className="mb-6">
             <p className="font-medium mb-2">Gender</p>
-            {["male", "female", "unisex"].map(g => (
-              <button
-                key={g}
-                className={`block w-full text-sm text-left px-1 py-0.5 rounded hover:bg-gray-100 ${genderFilter === g ? "bg-purple-100 font-semibold" : ""
+            <div className="flex flex-wrap gap-2">
+              {["male", "female", "unisex"].map(g => (
+                <button
+                  key={g}
+                  className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${
+                    genderFilter === g 
+                      ? "bg-purple-600 text-white font-medium" 
+                      : "bg-gray-100 hover:bg-gray-200"
                   }`}
-                onClick={() => setGenderFilter(genderFilter === g ? null : g)}
-              >
-                {g}
-              </button>
-            ))}
+                  onClick={() => setGenderFilter(genderFilter === g ? null : g)}
+                >
+                  {g.charAt(0).toUpperCase() + g.slice(1)}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Season */}
           <div className="mb-6">
             <p className="font-medium mb-2">Season</p>
-            {["Fall", "Spring", "Summer", "Winter"].map(season => (
-              <button
-                key={season}
-                className={`block w-full text-sm text-left px-1 py-0.5 rounded hover:bg-gray-100 ${seasonFilter === season ? "bg-purple-100 font-semibold" : ""
+            <div className="flex flex-wrap gap-2">
+              {["Fall", "Spring", "Summer", "Winter"].map(season => (
+                <button
+                  key={season}
+                  className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${
+                    seasonFilter === season 
+                      ? "bg-purple-600 text-white font-medium" 
+                      : "bg-gray-100 hover:bg-gray-200"
                   }`}
-                onClick={() =>
-                  setSeasonFilter(seasonFilter === season ? null : season)
-                }
-              >
-                {season}
-              </button>
-            ))}
+                  onClick={() =>
+                    setSeasonFilter(seasonFilter === season ? null : season)
+                  }
+                >
+                  {season}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Designers */}
           <div className="mb-6">
             <p className="font-medium mb-2">Designers</p>
-            <div className="relative mb-2 bg-white/50">
+            <div className="relative mb-2">
               <input
                 type="text"
                 placeholder="Search designers..."
-                className="text-sm w-full border rounded p-1 pr-8"
+                className="w-full border rounded-lg px-3 py-2 pr-9 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={designerSearch}
                 onChange={(e) => setDesignerSearch(e.target.value)}
               />
               <img
                 src="/search.png"
                 alt="Search"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none opacity-50"
               />
             </div>
-            <div className="max-h-40 overflow-y-auto text-sm">
+            <div className="max-h-40 overflow-y-auto space-y-1">
               {designers
                 .filter(([d]) =>
                   d.toLowerCase().includes(designerSearch.toLowerCase())
@@ -161,8 +202,11 @@ export default function Page() {
                 .map(([d, count]) => (
                   <button
                     key={d}
-                    className={`block w-full text-left px-1 py-0.5 rounded hover:bg-gray-100 ${designerFilter === d ? "bg-blue-100 font-semibold" : ""
-                      }`}
+                    className={`w-full text-left px-2 py-1.5 text-sm rounded-lg transition-colors ${
+                      designerFilter === d 
+                        ? "bg-blue-600 text-white font-medium" 
+                        : "hover:bg-gray-100"
+                    }`}
                     onClick={() =>
                       setDesignerFilter(designerFilter === d ? null : d)
                     }
@@ -176,21 +220,21 @@ export default function Page() {
           {/* Notes */}
           <div>
             <p className="font-medium mb-2">Notes</p>
-            <div className="relative mb-2 bg-white/50">
+            <div className="relative mb-2">
               <input
                 type="text"
                 placeholder="Search notes..."
-                className="text-sm w-full border rounded p-1 pr-8"
+                className="w-full border rounded-lg px-3 py-2 pr-9 bg-white/90 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={noteSearch}
                 onChange={(e) => setNoteSearch(e.target.value)}
               />
               <img
                 src="/search.png"
                 alt="Search"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 w-4 h-4 pointer-events-none"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none opacity-50"
               />
             </div>
-            <div className="max-h-40 overflow-y-auto text-sm">
+            <div className="max-h-40 overflow-y-auto space-y-1">
               {notes
                 .filter(([n]) =>
                   n.toLowerCase().includes(noteSearch.toLowerCase())
@@ -199,8 +243,11 @@ export default function Page() {
                 .map(([note, count]) => (
                   <button
                     key={note}
-                    className={`block w-full text-left px-1 py-0.5 rounded hover:bg-gray-100 ${noteFilter === note ? "bg-green-100 font-semibold" : ""
-                      }`}
+                    className={`w-full text-left px-2 py-1.5 text-sm rounded-lg transition-colors ${
+                      noteFilter === note 
+                        ? "bg-green-600 text-white font-medium" 
+                        : "hover:bg-gray-100"
+                    }`}
                     onClick={() =>
                       setNoteFilter(noteFilter === note ? null : note)
                     }
@@ -213,28 +260,35 @@ export default function Page() {
         </aside>
 
         {/* RIGHT MAIN */}
-        <section className="flex-1 p-8">
-          <div className="bg-white/50 backdrop-blur-md mb-6 relative">
+        <section className="flex-1 p-4 lg:p-8">
+          <div className="relative mb-6">
             <input
               type="text"
               placeholder="Search for fragrances..."
               value={search}
               onChange={e => setSearch(e.target.value)}
-              className="text-md w-full border rounded-lg p-3 shadow-md pr-10"
+              className="w-full border rounded-xl px-4 py-3 pr-11 bg-white/90 backdrop-blur-sm text-sm lg:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
             />
             <img
               src="/search.png"
               alt="Search"
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 pointer-events-none"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 pointer-events-none opacity-50"
             />
           </div>
 
+          {/* Results count */}
+          {filtered.length > 0 && (
+            <p className="text-sm text-gray-600 mb-4">
+              {filtered.length} {filtered.length === 1 ? 'fragrance found' : 'fragrances found'}
+            </p>
+          )}
+
           {/* Fragrance grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
             {filtered.slice(0, visibleCount).map(f => (
               <Link key={f.ID} href={`/fragrance/${f.ID}`}>
-                <div className="bg-white/95 rounded-2xl shadow-lg p-4 flex flex-col hover:shadow-lg transition transform hover:scale-105 cursor-pointer h-[300px]">
-                  <div className="relative w-full h-48 mb-4">
+                <div className="bg-white/95 rounded-xl shadow-md p-3 lg:p-4 flex flex-col hover:shadow-xl transition-all hover:scale-[1.02] h-full min-h-[280px] lg:min-h-[300px]">
+                  <div className="relative w-full h-40 lg:h-48 mb-3 flex-shrink-0">
                     <Image
                       src={f["Image URL"]}
                       alt={f.Name}
@@ -242,11 +296,12 @@ export default function Page() {
                       className="object-contain rounded-lg"
                     />
                   </div>
-                  <h2 className="text-lg font-semibold text-gray-900 line-clamp-2">
-                    {f.Name}
-                  </h2>
-                  <p className="text-gray-600 line-clamp-1">{f.Brand}</p>
-                  {/* <p className="text-green-700 font-medium mt-2">${f.Price}</p> */}
+                  <div className="flex-1 flex flex-col">
+                    <h2 className="text-sm lg:text-base font-semibold text-gray-900 line-clamp-2 mb-1">
+                      {f.Name}
+                    </h2>
+                    <p className="text-xs lg:text-sm text-gray-600 line-clamp-1">{f.Brand}</p>
+                  </div>
                 </div>
               </Link>
             ))}
@@ -254,9 +309,9 @@ export default function Page() {
 
           {/* Show More */}
           {visibleCount < filtered.length && (
-            <div className="flex justify-center mt-6">
+            <div className="flex justify-center mt-8">
               <button
-                className="px-6 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition"
+                className="px-6 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-medium"
                 onClick={() => setVisibleCount(prev => prev + 20)}
               >
                 Show More
@@ -264,8 +319,8 @@ export default function Page() {
             </div>
           )}
 
-          <footer className="text-center text-sm text-gray-500 mt-8 mb-4">
-            Images sourced from <a href="https://www.fragrantica.com/" target="_blank" rel="noopener noreferrer" className="underline">Fragrantica</a>.
+          <footer className="text-center text-xs lg:text-sm text-gray-500 mt-8 mb-4 px-4">
+            Images sourced from <a href="https://www.fragrantica.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-700">Fragrantica</a>.
             All rights reserved to their respective owners.
           </footer>
         </section>
